@@ -1,7 +1,7 @@
 import axios from 'axios';
 import type { Task, TaskInput, TaskStatusUpdate, ApiResponse } from '../types/task';
 
-const API_BASE_URL = 'http://localhost:3000';
+const API_BASE_URL = 'https://tasks-52lu.onrender.com';
 
 const api = axios.create({
     baseURL: API_BASE_URL,
