@@ -1,0 +1,194 @@
+/* Task base styles */
+.task {
+    position: relative;
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 12px;
+    border: 1px solid #f3f4f6;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.task:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    transform: translateY(-1px);
+    border-color: #e5e7eb;
+}
+
+/* Priority accent bars */
+.task--low {
+    border-left: 5px solid #22c55e;
+    background: linear-gradient(to right, rgba(34, 197, 94, 0.02), #fff);
+}
+
+.task--medium {
+    border-left: 5px solid #f97316;
+    background: linear-gradient(to right, rgba(249, 115, 22, 0.02), #fff);
+}
+
+.task--high {
+    border-left: 5px solid #ef4444;
+    background: linear-gradient(to right, rgba(239, 68, 68, 0.02), #fff);
+}
+
+/* Completed state */
+.task--completed {
+    opacity: 0.6;
+}
+
+.task--completed .task__title {
+    text-decoration: line-through;
+}
+
+/* Task layout */
+.task__main {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+}
+
+.task__checkbox-container {
+    flex-shrink: 0;
+    padding-top: 2px;
+}
+
+.task__checkbox {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    accent-color: #3b82f6;
+    transform: scale(1.1);
+    transition: transform 0.1s ease;
+}
+
+.task__checkbox:hover {
+    transform: scale(1.2);
+}
+
+.task__content {
+    flex: 1;
+    min-width: 0;
+}
+
+.task__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 4px;
+    gap: 8px;
+}
+
+/* Typography hierarchy */
+.task__title {
+    font-weight: 600;
+    margin: 0;
+    font-size: 1.05rem;
+    color: #111827;
+    line-height: 1.3;
+    flex: 1;
+    letter-spacing: -0.01em;
+}
+
+.task__priority-badge {
+    color: white;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    flex-shrink: 0;
+    line-height: 1.2;
+    text-transform: uppercase;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+.task__desc {
+    color: rgba(0, 0, 0, 0.65);
+    margin: 0 0 8px 0;
+    font-size: 0.875rem;
+    line-height: 1.4;
+}
+
+.task__meta {
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 0.75rem;
+    cursor: help;
+}
+
+/* Hover affordance & actions */
+.task__actions {
+    opacity: 0;
+    transition: opacity 120ms ease;
+    display: flex;
+    gap: 4px;
+    align-items: flex-start;
+}
+
+.task:hover .task__actions,
+.task:focus-within .task__actions {
+    opacity: 1;
+}
+
+.icon-btn {
+    background: none;
+    border: none;
+    padding: 6px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    min-width: 28px;
+    min-height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 120ms ease;
+}
+
+.icon-btn:hover {
+    background-color: #f3f4f6;
+}
+
+.task__edit:hover {
+    background-color: #fef3c7;
+}
+
+.task__delete:hover {
+    background-color: #fee2e2;
+}
+
+/* Focus visibility */
+.task,
+.task__checkbox,
+.icon-btn {
+    outline: none;
+}
+
+.task:focus-within,
+.task__checkbox:focus,
+.icon-btn:focus {
+    box-shadow: 0 0 0 3px rgba(46, 144, 250, .35);
+}
+
+/* Mobile tweaks */
+@media (max-width: 768px) {
+    .task {
+        padding: 12px;
+    }
+
+    .task__main {
+        gap: 8px;
+    }
+
+    .task__actions {
+        opacity: 1;
+        /* Always show on mobile */
+    }
+
+    .icon-btn {
+        min-width: 44px;
+        min-height: 44px;
+        font-size: 16px;
+    }
+}
